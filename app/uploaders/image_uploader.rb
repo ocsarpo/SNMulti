@@ -1,4 +1,5 @@
 class ImageUploader < CarrierWave::Uploader::Base
+  before :cache, :reset_secure_token
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
@@ -44,4 +45,17 @@ class ImageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+  def filename
+   "#{secure_token(10)}_#{original_filename}.#{file.extension}" if original_filename.present?
+  end
+
+protected
+  def secure_token(length = 16)
+    model.image_secure_token ||= SecureRandom.hex(length / 2)
+  end
+
+  def reset_secure_token(file)
+    model.image_secure_token = nil
+  end
+
 end

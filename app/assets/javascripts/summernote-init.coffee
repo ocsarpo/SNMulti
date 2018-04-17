@@ -41,6 +41,7 @@ $(document).on 'turbolinks:load', ->
     $(this).summernote
       lang: 'ko-KR'
       height: 400
+      placeholder: '끼룩끼룩 따오기 노래를 한다람쥐!'
       callbacks:
         onImageUpload: (files) ->
             sendFile files, $(this)

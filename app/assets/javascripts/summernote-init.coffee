@@ -19,11 +19,6 @@ sendFile = (files, toSummernote) ->
         console.log data
         img.setAttribute('id', "sn-image-#{picIds[i]}")
         toSummernote.summernote 'insertNode', img
-      # img = document.createElement('IMG')
-      # img.src = data.url
-      # console.log data
-      # img.setAttribute('id', "sn-image-#{data.upload_id}")
-      # toSummernote.summernote 'insertNode', img
 
 deleteFile = (file_id, file_name) ->
   data = new FormData
@@ -41,7 +36,9 @@ $(document).on 'turbolinks:load', ->
     $(this).summernote
       lang: 'ko-KR'
       height: 400
-      placeholder: '끼룩끼룩 따오기 노래를 한다람쥐!'
+      placeholder: '이미지 삭제 시 휴지통 아이콘을 이용해주세요.
+      한 번 삭제된 이미지는 복원이 불가능합니다.
+      다시 이미지를 첨부해주세요.'
       callbacks:
         onImageUpload: (files) ->
             sendFile files, $(this)

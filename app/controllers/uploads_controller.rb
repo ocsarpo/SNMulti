@@ -32,9 +32,9 @@ class UploadsController < ApplicationController
      dir = "#{Rails.root}/public/uploads/upload/images/#{@remember_id}/"
      File.delete(dir + "#{@file_name}")
 
-     puts "/////////////////// file count "
-     puts Dir[File.join(dir, '**', '*')].count { |file| File.file?(file) }
-     puts "/////////////////// file count "
+     # puts "/////////////////// file count "
+     # puts Dir[File.join(dir, '**', '*')].count { |file| File.file?(file) }
+     # puts "/////////////////// file count "
 
      fileCount = Dir[File.join(dir, '**', '*')].count { |file| File.file?(file) }
      if fileCount == 0
